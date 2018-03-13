@@ -3,7 +3,7 @@ import './../App.css';
 
 const char = () => {
   return (
-    <div className='char' value={props.value}>
+    <div className='char'>
     </div>
   )
 };
