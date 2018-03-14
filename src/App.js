@@ -10,11 +10,9 @@ class App extends Component {
   };
 
   onChangeHandler = (event) => {
-    this.setState(
-      {
-        inputText: event.target.value
-      }
-    )
+    this.setState({
+      inputText: event.target.value
+    });
   };
 
   deleteBoxHandler = (boxIndex) => {
