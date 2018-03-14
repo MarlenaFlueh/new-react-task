@@ -6,52 +6,37 @@ import Char from './Char/Char';
 class App extends Component {
 
   state = {
-    input: '',
-    charBox: '',
-    haveInput: false
+    inputText: '',
   };
 
   onChangeHandler = (event) => {
     this.setState(
       {
-        input: event.target.value,
-        haveInput: true 
+        inputText: event.target.value
       }
     )
   };
 
-  createCharBox = () => {
-    this.setState(
-      {
-        
-      }
-    )
+  deleteBoxHandler = (boxIndex) => {
+    const inputText = this.state.inputText.split('');
+    inputText.splice(boxIndex, 1);
+    this.setState({inputText: inputText.join('')});
   }
 
   render() {
-
-    if (this.state.haveInput) {
-      charBox: (
-        <div>
-          {this.state.input.map(() => {
-            return <Char 
-            changed={(event) => this.onChangeHandler(event)}/>
-          })}
-        </div>
-      )
-    }
-
     return (
       <div>
         <h1>New Application</h1>
         <input onChange={this.onChangeHandler}/>
-        <p>{this.state.input.length}</p>
-        <Validation length={this.state.input.length}/>
-        <Char />
+        <p>{this.state.inputText.length}</p>
+        <Validation length={this.state.inputText.length}/>
+        {this.state.inputText.split('').map((char, index) => {
+          return <Char name={char} key={index}
+          click={() => this.deleteBoxHandler(index)}/>
+        })}
       </div>
     );
   }
 }
-
 
 export default App;

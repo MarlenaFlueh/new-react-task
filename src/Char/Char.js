@@ -1,9 +1,10 @@
 import React from 'react';
 import './../App.css';
 
-const char = () => {
+const char = (props) => {
   return (
-    <div className='char'>
+    <div className='char' onClick={props.click}>
+      <p>{props.name}</p>
     </div>
   )
 };
